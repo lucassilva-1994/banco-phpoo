@@ -12,4 +12,11 @@ class Conta{
 			$this->saldo -= $valorASacar;
 		
 	}
+
+	public function depositar(float $valorADepositar){
+		if($valorADepositar <= 0)
+			print "Valor precisa ser maior do que zero.";
+		else
+			$this->saldo += $valorADepositar;
+	}
 }
