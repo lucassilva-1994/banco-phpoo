@@ -20,10 +20,10 @@ $terceiraConta->saldo = 1200;
 //Realizando saques nas contas abaixo.
 $primeiraConta->sacar(198);
 $segundaConta->sacar(10);
-$terceiraConta->sacar(1100);
+$terceiraConta->sacar(1250);
 
 //Realizando depositos nas contas abaixo.
-$primeiraConta->depositar(500);
+$primeiraConta->depositar(1);
 $segundaConta->depositar(300);
 $terceiraConta->depositar(1450);
 print "<pre>";
