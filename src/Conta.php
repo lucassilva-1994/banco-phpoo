@@ -3,22 +3,31 @@
 class Conta{
 	public string $cpfTitular;
 	public string $nomeTitular;
-	public float $saldo;
+	public float $saldo = 0;
 
 	public function sacar(float $valorASacar): void{
-		if ($valorASacar > $this->saldo) 
-			print "Saldo indisponível <br/>";
+		if ($valorASacar > $this->saldo){
+			print "Saldo indisponível. <br/>";
 			return;
-
-			$this->saldo -= $valorASacar;
-		
+		}
+		$this->saldo -= $valorASacar;
 	}
 
 	public function depositar(float $valorADepositar):void{
-		if($valorADepositar <= 0)
+		if($valorADepositar <= 0){
 			print "Valor precisa ser maior do que zero.";
 			return;
-			
-			$this->saldo += $valorADepositar;
+		}
+		$this->saldo += $valorADepositar;
+	}
+
+	public function transferir(float $valorATransferir, Conta $contaDestino): void
+	{
+	    if ($valorATransferir > $this->saldo) {
+	        echo "Saldo indisponível";
+	        return;
+	    } 
+	    $this->sacar($valorATransferir);
+	    $contaDestino->depositar($valorATransferir);
 	}
 }
