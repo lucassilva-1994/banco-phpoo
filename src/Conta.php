@@ -1,11 +1,11 @@
 <?php
 
 class Conta{
-	public string $cpfTitular;
-	public string $nomeTitular;
-	public float $saldo = 0;
+	private string $cpfTitular;
+	private string $nomeTitular;
+	private float $saldo = 0;
 
-	public function sacar(float $valorASacar): void{
+	public function saca(float $valorASacar): void{
 		if ($valorASacar > $this->saldo){
 			print "Saldo indisponível. <br/>";
 			return;
@@ -13,7 +13,7 @@ class Conta{
 		$this->saldo -= $valorASacar;
 	}
 
-	public function depositar(float $valorADepositar):void{
+	public function deposita(float $valorADepositar):void{
 		if($valorADepositar <= 0){
 			print "Valor precisa ser maior do que zero.";
 			return;
@@ -21,13 +21,33 @@ class Conta{
 		$this->saldo += $valorADepositar;
 	}
 
-	public function transferir(float $valorATransferir, Conta $contaDestino): void
+	public function transfere(float $valorATransferir, Conta $contaDestino): void
 	{
 	    if ($valorATransferir > $this->saldo) {
-	        echo "Saldo indisponível";
+	        print "Saldo indisponível";
 	        return;
 	    } 
-	    $this->sacar($valorATransferir);
-	    $contaDestino->depositar($valorATransferir);
+	    $this->saca($valorATransferir);
+	    $contaDestino->deposita($valorATransferir);
+	}
+
+	public function defineCpfTitular(string $cpf){
+		$this->cpfTitular = $cpf;
+	}
+
+	public function defineNomeTitular(string $nome){
+		$this->nomeTitular = $nome;
+	}
+
+	public function recuperaCpfTitular(){
+		return $this->cpfTitular;
+	}
+
+	public function recuperaNomeTitular(){
+		return $this->nomeTitular;
+	}
+
+	public function recuperaSaldo(){
+		return $this->saldo;
 	}
 }
