@@ -3,7 +3,13 @@
 class Conta{
 	private string $cpfTitular;
 	private string $nomeTitular;
-	private float $saldo = 0;
+	private float $saldo;
+
+	public function __construct(string $cpfTitular, string $nomeTitular){
+		$this->cpfTitular = $cpfTitular;
+		$this->nomeTitular = $nomeTitular;
+		$this->saldo = 0;
+	}
 
 	public function saca(float $valorASacar): void{
 		if ($valorASacar > $this->saldo){
@@ -31,23 +37,16 @@ class Conta{
 	    $contaDestino->deposita($valorATransferir);
 	}
 
-	public function defineCpfTitular(string $cpf){
-		$this->cpfTitular = $cpf;
-	}
-
-	public function defineNomeTitular(string $nome){
-		$this->nomeTitular = $nome;
-	}
-
-	public function recuperaCpfTitular(){
+	public function recuperaCpfTitular():string{
 		return $this->cpfTitular;
 	}
 
-	public function recuperaNomeTitular(){
+	public function recuperaNomeTitular():string{
 		return $this->nomeTitular;
 	}
 
-	public function recuperaSaldo(){
+	public function recuperaSaldo():float{
 		return $this->saldo;
+		
 	}
 }
